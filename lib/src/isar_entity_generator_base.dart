@@ -1,5 +1,6 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
+import 'package:isar_entity_generator/convertible.dart';
 import 'package:source_gen/source_gen.dart';
 
 class IsarEntityGenerator extends GeneratorForAnnotation<convertible> {

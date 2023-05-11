@@ -1,7 +1,0 @@
-builders:
-  isar_entity:
-    import: "package:isar_entity_generator/builder.dart"
-    builder_factories: ["myBuilder"]
-    build_extensions: {".dart": [".isar.e.dart"]}
-    auto_apply: dependents
-    build_to: cache
