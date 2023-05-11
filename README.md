@@ -11,13 +11,30 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-Simple class converter. Generates from/to based on class type. Assumes both classes have the same number of fields, same type and name.
+Simple Isar class to generic classes/entities. Generates from/to based on class type. Assumes both classes have the same number of fields, same type and name.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+Example
 
 ```dart
-const like = 'sample';
+part 'user.g.dart';
+@convertible(to: 'UserEntity')
+@collection
+class User {
+    String name;
+}
+```
+
+Generates the followig output in `user.g.dart`:
+
+```dart
+// **************************************************************************
+// IsarEntityGenerator
+// **************************************************************************
+
+User userFromEntity(UserEntity p) {
+  return User()
+    ..name = p.name;
+}
 ```
