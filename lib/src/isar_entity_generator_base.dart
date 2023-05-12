@@ -1,6 +1,7 @@
 import 'package:analyzer/dart/element/element.dart';
 import 'package:build/build.dart';
 import 'package:isar_entity_generator/convertible.dart';
+import 'package:recase/recase.dart';
 import 'package:source_gen/source_gen.dart';
 
 class IsarEntityGenerator extends GeneratorForAnnotation<convertible> {
@@ -13,9 +14,12 @@ class IsarEntityGenerator extends GeneratorForAnnotation<convertible> {
     final classElement = element as ClassElement;
     final otherClassName = annotation.read('to').stringValue;
 
+    final classReCase = ReCase(classElement.name);
+    final camelCaseClassName = classReCase.camelCase;
+
     // Generate the "from" function
     var fromFunctionBuffer = StringBuffer()
-      ..writeln('${classElement.name} ${classElement.name.toLowerCase()}FromEntity($otherClassName p) {')
+      ..writeln('${classElement.name} ${camelCaseClassName}FromEntity($otherClassName p) {')
       ..writeln('  return ${classElement.name}()');
 
     // Iterate over all fields in the class
